@@ -22,7 +22,7 @@ fun BancoNavigation(navController: NavHostController) {
         composable(NavScreen.PagarTarjetas.name){
             TarjetasScreen()
         }
-        composable(NavScreen.Transferencas.name){
+        composable(NavScreen.Transferencias.name){
             TransferenciaScreen()
         }
     }

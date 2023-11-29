@@ -15,7 +15,7 @@ sealed class ItemBottomNav(
     object ItemBottomNav1:ItemBottomNav(
         icon = Icons.Outlined.AttachMoney,
         title = "Transferencias",
-        ruta = NavScreen.Transferencas.name
+        ruta = NavScreen.Transferencias.name
     )
     object ItemBottomNav2:ItemBottomNav(
         icon = Icons.Outlined.PriceCheck,
