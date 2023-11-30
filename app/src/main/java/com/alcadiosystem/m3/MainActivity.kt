@@ -12,7 +12,11 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.outlined.CardGiftcard
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -23,6 +27,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SheetState
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.rememberDrawerState
 import androidx.compose.material3.rememberModalBottomSheetState
 import androidx.compose.runtime.Composable
@@ -95,6 +100,36 @@ fun Contenido(
             ContentBottomSheet(mainViewModel, navController, sheetState)
         }
     }
+
+    if (mainViewModel.showDialogRecompensas) {
+        DialogoRecompensas(mainViewModel)
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DialogoRecompensas(mainViewModel: MainViewModel) {
+    AlertDialog(
+        icon = {
+            Icon(
+                imageVector = Icons.Outlined.CardGiftcard,
+                contentDescription = null,
+                modifier = Modifier.size(48.dp)
+            )
+        },
+        title = { Text(text = "Recompensas") },
+        text = { Text(text = "Esta opcion estara disponible muy pronto") },
+        onDismissRequest = {
+            mainViewModel.showDialogRecompensas = !mainViewModel.showDialogRecompensas
+        },
+        confirmButton = {
+            TextButton(onClick = {
+                mainViewModel.showDialogRecompensas = !mainViewModel.showDialogRecompensas
+            }) {
+                Text(text = "Cerrar")
+            }
+        }
+    )
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -125,11 +160,13 @@ fun ContentBottomSheet(
                 modifier = Modifier
                     .height(48.dp)
                     .clickable {
-                        scope.launch {
-                            sheetState.hide()
-                        }.invokeOnCompletion {
-                            mainViewModel.showBottomSheet = false
-                        }
+                        scope
+                            .launch {
+                                sheetState.hide()
+                            }
+                            .invokeOnCompletion {
+                                mainViewModel.showBottomSheet = false
+                            }
                         navController.navigate(item.ruta)
                     }) {
                 Icon(imageVector = item.icon, contentDescription = item.title)

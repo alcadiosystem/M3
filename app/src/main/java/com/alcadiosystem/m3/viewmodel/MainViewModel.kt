@@ -9,4 +9,6 @@ class MainViewModel: ViewModel() {
 
     var showBottomSheet by mutableStateOf(false)
 
+    var showDialogRecompensas by mutableStateOf(false)
+
 }

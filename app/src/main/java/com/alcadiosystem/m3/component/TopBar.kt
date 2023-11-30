@@ -53,7 +53,9 @@ fun TopBar(drawerState: DrawerState) {
             }
         },
         actions = {
-            IconButton(onClick = { /*TODO*/ }) {
+            IconButton(onClick = {
+                mainViewModel.showDialogRecompensas = !mainViewModel.showDialogRecompensas
+            }) {
                 Icon(
                     imageVector = Icons.Outlined.CardGiftcard,
                     contentDescription = "Ir recompensas"
@@ -76,11 +78,11 @@ fun TopBar(drawerState: DrawerState) {
                     text = { Text(text = "Edit") },
                     onClick = { },
                     leadingIcon = {
-                    Icon(
-                        imageVector = Icons.Outlined.Edit,
-                        contentDescription =null
-                    )
-                })
+                        Icon(
+                            imageVector = Icons.Outlined.Edit,
+                            contentDescription = null
+                        )
+                    })
                 Divider()
                 DropdownMenuItem(
                     text = { Text("Send Feedback") },
