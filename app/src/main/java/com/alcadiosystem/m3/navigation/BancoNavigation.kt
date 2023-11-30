@@ -4,6 +4,8 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.alcadiosystem.m3.screens.ConfigurarApariencia
+import com.alcadiosystem.m3.screens.ConfigurarNotificaciones
 import com.alcadiosystem.m3.screens.HomeScreen
 import com.alcadiosystem.m3.screens.PagarServicioScreen
 import com.alcadiosystem.m3.screens.TarjetasScreen
@@ -24,6 +26,12 @@ fun BancoNavigation(navController: NavHostController) {
         }
         composable(NavScreen.Transferencias.name){
             TransferenciaScreen()
+        }
+        composable(NavScreen.ConfigurarApariencia.name){
+            ConfigurarApariencia()
+        }
+        composable(NavScreen.ConfiguracionNotificacion.name){
+            ConfigurarNotificaciones()
         }
     }
 

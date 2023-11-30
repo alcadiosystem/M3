@@ -5,6 +5,8 @@ enum class NavScreen {
     HomeScreen,
     Transferencias,
     PagarServicios,
-    PagarTarjetas
+    PagarTarjetas,
+    ConfigurarApariencia,
+    ConfiguracionNotificacion
 
 }
