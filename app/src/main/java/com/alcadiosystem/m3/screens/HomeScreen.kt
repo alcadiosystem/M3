@@ -2,6 +2,7 @@ package com.alcadiosystem.m3.screens
 
 import androidx.compose.animation.animateContentSize
 import androidx.compose.animation.core.tween
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -23,11 +24,13 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.alcadiosystem.m3.models.ItemsPrincipal
 import com.alcadiosystem.m3.models.ItemsPrincipal.*
+import com.alcadiosystem.m3.navigation.NavScreen
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
     val listItemPrincipal = listOf(
         ItemPrincipal1,
         ItemPrincipal2,
@@ -39,14 +42,14 @@ fun HomeScreen() {
         contentPadding = PaddingValues(16.dp)
     ) {
         items(listItemPrincipal) { item ->
-            ListItemRow(item)
+            ListItemRow(item, navController)
             Divider()
         }
     }
 }
 
 @Composable
-fun ListItemRow(item: ItemsPrincipal) {
+fun ListItemRow(item: ItemsPrincipal, navController: NavHostController) {
     var masInfo = remember { mutableStateOf(false) }
     Column(
         modifier = Modifier
@@ -76,7 +79,11 @@ fun ListItemRow(item: ItemsPrincipal) {
             }
         }
         if(masInfo.value){
-            Row{
+            Row(
+                modifier = Modifier.clickable {
+                    navController.navigate(NavScreen.MovimientosTabs.name)
+                }
+            ){
                 Text(text = item.details)
             }
         }

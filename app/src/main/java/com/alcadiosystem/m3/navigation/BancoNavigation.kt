@@ -10,13 +10,14 @@ import com.alcadiosystem.m3.screens.HomeScreen
 import com.alcadiosystem.m3.screens.PagarServicioScreen
 import com.alcadiosystem.m3.screens.TarjetasScreen
 import com.alcadiosystem.m3.screens.TransferenciaScreen
+import com.alcadiosystem.m3.screens.movimientos.MovimientosTabs
 
 @Composable
 fun BancoNavigation(navController: NavHostController) {
 
     NavHost(navController = navController, startDestination = NavScreen.HomeScreen.name ){
         composable(NavScreen.HomeScreen.name){
-            HomeScreen()
+            HomeScreen(navController)
         }
         composable(NavScreen.PagarServicios.name){
             PagarServicioScreen()
@@ -32,6 +33,9 @@ fun BancoNavigation(navController: NavHostController) {
         }
         composable(NavScreen.ConfiguracionNotificacion.name){
             ConfigurarNotificaciones()
+        }
+        composable(NavScreen.MovimientosTabs.name){
+            MovimientosTabs()
         }
     }
 

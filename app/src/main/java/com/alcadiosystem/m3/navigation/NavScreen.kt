@@ -7,6 +7,6 @@ enum class NavScreen {
     PagarServicios,
     PagarTarjetas,
     ConfigurarApariencia,
-    ConfiguracionNotificacion
-
+    ConfiguracionNotificacion,
+    MovimientosTabs
 }

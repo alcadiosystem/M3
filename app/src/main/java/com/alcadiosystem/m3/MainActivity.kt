@@ -43,6 +43,7 @@ import com.alcadiosystem.m3.component.NavegacionInferior
 import com.alcadiosystem.m3.component.TopBar
 import com.alcadiosystem.m3.models.ItemOptionConfig.*
 import com.alcadiosystem.m3.navigation.BancoNavigation
+import com.alcadiosystem.m3.screens.movimientos.MovimientosTabs
 import com.alcadiosystem.m3.ui.theme.M3Theme
 import com.alcadiosystem.m3.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
@@ -90,7 +91,8 @@ fun Contenido(
             TopBar(drawerState = drawerState)
         }
     ) { padding ->
-        Box(modifier = Modifier.padding(padding)) {
+        Column(modifier = Modifier.padding(padding)) {
+//            MovimientosTabs()
             BancoNavigation(navController = navController)
         }
 
